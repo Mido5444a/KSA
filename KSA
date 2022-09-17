@@ -1,0 +1,103 @@
+
+-- كاشف اماكن
+
+local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+ESP:Toggle(false)
+ESP.Tracers = false
+ESP.Names = false
+ESP.Boxes = false
+ESP.TeamColor = false
+
+
+
+
+
+
+
+
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("حياة واقعية السعودية / KSA Roleplay")
+local Tab = Window:NewTab("الاعب")
+local Tab1 = Window:NewTab("الاعبين")
+local Tab2 = Window:NewTab("مصمم السكربت")
+local Section = Tab:NewSection("كاشف اماكن")
+local Section1 = Tab1:NewSection("الاعبين")
+local Section2 = Tab2:NewSection("Made By Nooody")
+--المهم
+
+Section1:NewButton("اسلحه مجانيه", "ButtonInfo", function()
+  local teleport_table = {
+    location1 = Vector3.new(-15387, 14, -1374), 
+}
+
+local tween_s = game:GetService('TweenService')
+local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+
+local lp = game.Players.LocalPlayer
+
+function bypass_teleport(v)
+    if lp.Character and 
+    lp.Character:FindFirstChild('HumanoidRootPart') then
+        local cf = CFrame.new(v)
+        local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+        a:Play()
+        
+    end
+end
+
+bypass_teleport(teleport_table.location1)
+end)
+Section1:NewButton("ادمن", "ButtonInfo", function()
+  loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+Section:NewToggle("تشغيل", "", function(state)
+    if state then
+  ESP:Toggle(true)
+    else
+  ESP:Toggle(false)
+    end
+  end)
+  
+  Section:NewToggle("صندوق", "", function(state)
+    if state then
+      ESP.Boxes = true
+    else
+  ESP.Boxes = false
+    end
+  end)
+  
+  Section:NewToggle("خطوط", "", function(state)
+    if state then
+  ESP.Tracers = true
+    else
+  ESP.Tracers = false
+    end
+  end)
+  
+  Section:NewToggle("اسماء", "", function(state)
+    if state then
+      ESP.Names = true
+    else
+  ESP.Names = false
+    end
+  end)
+  
+  Section:NewToggle("لون الفريق", "", function(state)
+    if state then
+      ESP.TeamColor = true
+    else
+      ESP.TeamColor = false
+    end
+  end)
+  
+  Section:NewColorPicker("الوان الكشف الاماكن", "Color Info", Color3.fromRGB(0,0,0), function(color)
+  ESP.Color = color
+  end)
+
+
+
+
+
+
